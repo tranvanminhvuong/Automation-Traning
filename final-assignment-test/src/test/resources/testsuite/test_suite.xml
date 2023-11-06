@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="suite">
+    <test name="test suite">
+        <classes>
+            <class name="com.nashtech.assetmanagement.tests.DeleteAssetTest" />
+            <class name="com.nashtech.assetmanagement.tests.ManageAssignmentTest" />
+            <class name="com.nashtech.assetmanagement.tests.SearchAssignmentTest" />
+        </classes>
+    </test>
+</suite>

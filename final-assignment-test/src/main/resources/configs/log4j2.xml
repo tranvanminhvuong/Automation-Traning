@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="baseDir">logs</Property>
+        <Property name="LOG_PATTERN">[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <!-- File Appender -->
+        <RollingFile name="fileLogger"
+                     fileName="${baseDir}/app.log"
+                         filePattern="${baseDir}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <pattern>${LOG_PATTERN}</pattern>
+            </PatternLayout>
+            <Policies>
+                <!-- Causes a rollover once the date/time pattern no longer applies to the active file -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+                <!-- The SizeBasedTriggeringPolicy causes a rollover once the file has reached the specified size-->
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+            <!-- Max 10 files will be created everyday, default it is 7 if max is not defined -->
+            <DefaultRolloverStrategy max="10">
+                <Delete basePath="${baseDir}" maxDepth="10">
+                    <!-- Delete all files older than 30 days -->
+                    <IfLastModified age="30d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="fileLogger"/>
+        </Root>
+    </Loggers>
+</Configuration>

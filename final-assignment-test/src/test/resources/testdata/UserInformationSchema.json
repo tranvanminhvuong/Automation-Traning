@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "staffCode": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "userName": {
+              "type": "string"
+            },
+            "dateOfBirth": {
+              "type": "string"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "joinedDate": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            },
+            "isLogged": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "id",
+            "staffCode",
+            "firstName",
+            "lastName",
+            "userName",
+            "dateOfBirth",
+            "gender",
+            "joinedDate",
+            "type",
+            "location",
+            "isLogged"
+          ]
+        }
+      ]
+    },
+    "page": {
+      "type": "integer"
+    },
+    "limit": {
+      "type": "integer"
+    },
+    "totalRecords": {
+      "type": "integer"
+    },
+    "pageCount": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "items",
+    "page",
+    "limit",
+    "totalRecords",
+    "pageCount"
+  ]
+}
